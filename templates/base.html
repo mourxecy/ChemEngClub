@@ -9,32 +9,6 @@
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-<style>
-/* Dark mode background + text */
-.dark-mode {
-    background-color: #121212 !important;
-    color: #f1f1f1 !important;
-}
-
-/* Cards and containers */
-.dark-mode .card,
-.dark-mode .modal-content {
-    background-color: #1e1e1e !important;
-    color: #fff !important;
-}
-
-/* Navbar */
-.dark-mode .navbar {
-    background-color: #000 !important;
-}
-
-/* Buttons */
-.dark-mode .btn {
-    border-color: #fff !important;
-}
-</style>
-
 </head>
 
 <!-- LOGIN REQUIRED MODAL -->
@@ -79,14 +53,6 @@
 </div>
 
 <body>
-
-  <!-- Dark Mode Toggle -->
-  <button class="btn btn-outline-light position-fixed m-3 no-print"
-          style="z-index: 2000; right: 0; top: 0;"
-          onclick="toggleDarkMode()">
-      🌙 Dark Mode
-  </button>
-
   <div class="container-fluid p-0">
 
     {% block navbar %}
@@ -148,24 +114,6 @@
   </div>
 
   <!-- MAIN CONTENT -->
-  <main class="container-fluid p-0">
-    {% block content %}
-    
-    <!-- Dark Mode Script -->
-    <script>
-      function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem("dark-mode", document.body.classList.contains('dark-mode'));
-      }
-
-      if (localStorage.getItem("dark-mode") === "true") {
-        document.body.classList.add('dark-mode');
-      }
-    </script>
-
-    {% endblock %}
-  </main>
-
   {% block scripts %}
 
 <script>
