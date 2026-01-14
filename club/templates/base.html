@@ -8,6 +8,7 @@
 
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <!-- LOGIN REQUIRED MODAL -->
@@ -196,5 +197,31 @@ function runSearch(event) {
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 {% endblock %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const loadMoreBtn = document.getElementById("loadMorePastEvents");
+  const hiddenEvents = document.querySelectorAll(".past-event.d-none");
+
+  let itemsToShow = 3;
+  let currentIndex = 0;
+
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", function () {
+      for (let i = currentIndex; i < currentIndex + itemsToShow; i++) {
+        if (hiddenEvents[i]) {
+          hiddenEvents[i].classList.remove("d-none");
+        }
+      }
+      currentIndex += itemsToShow;
+
+      if (currentIndex >= hiddenEvents.length) {
+        loadMoreBtn.style.display = "none";
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>

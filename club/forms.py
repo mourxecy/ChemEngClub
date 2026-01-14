@@ -21,15 +21,14 @@ class RegisterForm(UserCreationForm):
 class ResourceForm(forms.ModelForm):
     class Meta:
         model = Resource
-        fields = ['title','unit','resource_type','file','description']
-
-    def clean_file(self):
-        f = self.cleaned_data.get('file')
-        if f:
-            max_mb = 20
-            if f.size > max_mb * 1024 * 1024:
-                raise forms.ValidationError(f"Max file size is {max_mb}MB")
-        return f
+        fields = "__all__"
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'unit': forms.Select(attrs={'class': 'form-select'}),
+            'resource_type': forms.Select(attrs={'class': 'form-select'}),
+            'file': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+        }
 
 class UnitForm(forms.ModelForm):
     class Meta:

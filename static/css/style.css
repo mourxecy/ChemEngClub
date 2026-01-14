@@ -297,3 +297,15 @@ footer {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+.footer-icon {
+  font-size: 1.6rem;
+  color: #ffc107 !important;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-icon:hover {
+  color: #ffffff !important;
+  transform: scale(1.15);
+}
+

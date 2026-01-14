@@ -3,12 +3,11 @@
 
 {% block content %}
 
-     {% if unit %}
-    <p class="text-muted mb-4">
-        Filtering by Unit: <strong>{{ unit.title }}</strong>
-    </p>
-     {% endif %}
-
+{% if unit %}
+<p class="text-muted mb-4">
+    Filtering by Unit: <strong>{{ unit.title }}</strong>
+</p>
+{% endif %}
 
 <div class="container py-5">
 
@@ -25,24 +24,45 @@
             {% for r in resources %}
             <div class="col-md-6 col-lg-4 mb-3">
                 <div class="card shadow-sm border-0 p-3 h-100">
+
                     <h5 class="fw-bold">{{ r.title }}</h5>
+
                     <p class="small text-muted">
-                        {% if r.unit %}Unit: {{ r.unit.title }}{% endif %}
+                        {% if r.unit %}
+                            Unit: {{ r.unit.title }}
+                        {% endif %}
                         <br>
                         Uploaded: {{ r.uploaded_at|date:"M d, Y" }}
                     </p>
 
-                    <a href="{{ r.file.url }}" class="btn btn-success btn-sm" download>
-                        Download
-                    </a>
+                    <div class="d-flex gap-2 mt-auto">
+
+                        <!-- Open File -->
+                        <a href="{{ r.file.url }}" 
+                           target="_blank" 
+                           class="btn btn-primary btn-sm">
+                            Open
+                        </a>
+
+                        <!-- Download File -->
+                        <a href="{{ r.file.url }}" 
+                           download 
+                           class="btn btn-success btn-sm">
+                            Download
+                        </a>
+
+                    </div>
+
                 </div>
             </div>
             {% endfor %}
         </div>
+
     {% else %}
         <p class="text-muted">No resources found in this category.</p>
     {% endif %}
 
     <a href="{% url 'study_resources' %}" class="btn btn-secondary mt-3">Back to Categories</a>
 </div>
+
 {% endblock %}

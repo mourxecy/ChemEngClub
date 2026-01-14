@@ -51,7 +51,7 @@ class CustomLogoutView(LogoutView):
     next_page = '/'
 
 # Admin dashboard
-@login_required
+@login_required(login_url='login')
 @user_passes_test(is_admin)
 def admin_dashboard(request):
     now = timezone.now()
@@ -67,7 +67,7 @@ def admin_dashboard(request):
     })
 
 # Resource CRUD
-@login_required
+@login_required(login_url='login')
 @user_passes_test(is_admin)
 def resource_create(request):
     if request.method == 'POST':
@@ -263,3 +263,18 @@ def edit_event(request, event_id):
         form = EventForm(instance=event)
 
     return render(request, 'event_edit.html', {'form': form})
+
+
+# views.py
+def study_resources(request):
+    resource_type = request.GET.get('type')
+
+    resources = Resource.objects.all()
+    if resource_type:
+        resources = resources.filter(resource_type=resource_type)
+
+    context = {
+        'resources': resources,
+        'resource_type': resource_type,
+    }
+    return render(request, 'study_resources.html', context)

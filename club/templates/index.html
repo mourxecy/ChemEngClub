@@ -104,7 +104,7 @@
 
       <!-- Academic Years -->
       <div class="col-md-3">
-         <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+         <div class="card shadow-lg border-0 rounded-4 p-3 h-100">
            <div class="card-body">
              <h5 class="card-title fw-bold text-primary">Academic Years</h5>
              <p class="card-text">Browse through all years and their units.</p>
@@ -116,7 +116,7 @@
 
       <!-- Study Resources -->
       <div class="col-md-3">
-        <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+        <div class="card shadow-lg border-0 rounded-4 p-3 h-100">
           <div class="card-body">
             <h5 class="card-title fw-bold text-primary">Study Resources</h5>
             <p class="card-text">Access notes, tutorials, and reference materials.</p>
@@ -127,7 +127,7 @@
 
       <!-- Past Papers -->
       <div class="col-md-3">
-        <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+        <div class="card shadow-lg border-0 rounded-4 p-3 h-100">
           <div class="card-body">
             <h5 class="card-title fw-bold text-primary">Past Papers</h5>
             <p class="card-text">Practice with previous examination papers.</p>
@@ -138,7 +138,7 @@
 
       <!-- Club Events -->
       <div class="col-md-3">
-        <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+        <div class="card shadow-lg border-0 rounded-4 p-3 h-100">
           <div class="card-body">
             <h5 class="card-title fw-bold text-primary">Club Events</h5>
             <p class="card-text">Stay updated with upcoming events.</p>
@@ -158,36 +158,50 @@
 <section id="resources" class="py-5 bg-white">
   <div class="container text-center">
     <h2 class="fw-bold mb-4 text-primary">Study Resources</h2>
-    <p class="mb-4">Find lecture notes, tutorials, and reference materials organized by year and unit.</p>
+    <p class="mb-4">
+      Find lecture notes, tutorials, and reference materials organized by year and unit.
+    </p>
 
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
 
+      <!-- Lecture Notes -->
       <div class="col-md-4">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card shadow-lg border-0 rounded-4 h-100">
           <div class="card-body">
             <h5 class="card-title fw-bold text-primary">Lecture Notes</h5>
-            <p>Download lecture notes for each unit and year.</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#notesModal">View Notes</button>
+            <p>Download lecture notes for each unit and academic year.</p>
+            <a href="{% url 'study_resources' %}?type=notes"
+               class="btn btn-outline-primary btn-sm">
+              View Notes
+            </a>
           </div>
         </div>
       </div>
 
+      <!-- Tutorials -->
       <div class="col-md-4">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card shadow-lg border-0 rounded-4 h-100">
           <div class="card-body">
             <h5 class="card-title fw-bold text-primary">Tutorials</h5>
-            <p>Access example problems, worked-out solutions, and exercises.</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tutorialsModal">Open Tutorials</button>
+            <p>Access example problems, worked solutions, and exercises.</p>
+            <a href="{% url 'study_resources' %}?type=tutorials"
+               class="btn btn-outline-primary btn-sm">
+              Open Tutorials
+            </a>
           </div>
         </div>
       </div>
 
+      <!-- Reference Materials -->
       <div class="col-md-4">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card shadow-lg border-0 rounded-4 h-100">
           <div class="card-body">
             <h5 class="card-title fw-bold text-primary">Reference Materials</h5>
             <p>Recommended textbooks and external study resources.</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#referenceModal">View References</button>
+            <a href="{% url 'study_resources' %}?type=references"
+               class="btn btn-outline-primary btn-sm">
+              View References
+            </a>
           </div>
         </div>
       </div>
@@ -195,71 +209,6 @@
     </div>
   </div>
 </section>
-
-<!-- =================================== -->
-<!--      NOTES MODAL (SHORTENED)       -->
-<!-- =================================== -->
-<div class="modal fade" id="notesModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Lecture Notes</h5>
-        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-
-        <div class="accordion" id="notesAccordion">
-
-          <!-- Add your items here (same as your original code) -->
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Tutorials Modal -->
-<div class="modal fade" id="tutorialsModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Tutorials</h5>
-        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <div class="accordion" id="tutorialsAccordion">
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- References Modal -->
-<div class="modal fade" id="referenceModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Reference Materials</h5>
-        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <ul class="list-group">
-          <li class="list-group-item"><i class="bi bi-book text-success"></i> Perry's Chemical Engineers' Handbook</li>
-          <li class="list-group-item"><i class="bi bi-book text-success"></i> Unit Operations of Chemical Engineering – McCabe & Smith</li>
-          <li class="list-group-item"><i class="bi bi-book text-success"></i> Thermodynamics – Smith, Van Ness & Abbott</li>
-          <li class="list-group-item"><i class="bi bi-book text-success"></i> Process Heat Transfer – Kern</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <!-- EVENTS PAGE -->
 <section id="events" class="py-5 bg-light">
@@ -271,7 +220,7 @@
       <div class="row">
         {% for event in upcoming_events %}
           <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
+            <div class="card shadow-lg">
               <div class="card-body">
                 <h5 class="card-title">{{ event.title }}</h5>
                 <img src="{{event.poster.url}}" class="card-img-top">
@@ -310,31 +259,29 @@
           {% if past_events %}
 
           <div class="row" id="pastEventsContainer">
-              {% for event in past_events|slice:":3" %}   {# Show first 3 only #}
-              <div class="col-md-4 mb-4 past-event-card">
-                  
+              {% for event in past_events %}
+                <div class="col-md-4 mb-4 past-event-card {% if forloop.counter > 3 %}d-none{% endif %}">
+
                   <div class="card shadow-sm border-secondary h-100 fade-in">
-                      {% if event.poster %}
+                     {% if event.poster %}
                       <img src="{{ event.poster.url }}" class="card-img-top" alt="Poster">
                       {% endif %}
 
                       <div class="card-body">
-                          <h5 class="card-title">{{ event.title }}</h5>
-                          <p class="card-text">{{ event.description|truncatewords:20 }}</p>
+                       <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="card-text">{{ event.description|truncatewords:20 }}</p>
 
-                          <small class="text-muted d-block mb-2">
-                              Date: {{ event.start|date:"Y-m-d H:i" }}
-                          </small>
+                         <small class="text-muted d-block mb-2">
+                           Date: {{ event.start|date:"Y-m-d H:i" }}
+                         </small>
 
-                          <a href="{% url 'event_edit' event.id %}" class="btn btn-outline-secondary btn-sm">
-                              Edit
-                          </a>
+                        <a href="{% url 'event_edit' event.id %}"class="btn btn-outline-secondary btn-sm">Edit</a>
                       </div>
                   </div>
-
-              </div>
-              {% endfor %}
+               </div>
+             {% endfor %}
           </div>
+
 
           <!-- Pagination Buttons -->
           {% if past_events|length > 3 %}
@@ -380,15 +327,29 @@
           <li><a href="#" class="footer-link">Admin</a></li>
         </ul>
       </div>
-
+        
       <!-- Contact -->
-      <div class="col-md-4 mb-4">
-        <h5 class="fw-bold mb-3 text-warning">Contact Us</h5>
-        <p class="small mb-1"><strong>Chairman:</strong> 0728187828</p>
-        <p class="small mb-0">
-          <strong>Email:</strong>
-          <a href="mailto:chemengclub@gmail.com" class="footer-link">chemengclub@gmail.com</a>
-        </p>
+      <div class="col-md-4 mb-4 text-center text-md-start">
+       <h5 class="fw-bold mb-3 text-warning">Connect With Us</h5>
+
+        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+
+          <!-- WhatsApp -->
+          <a href="https://chat.whatsapp.com/GkDmOBMz6jcFencHtcgmMR" target="_blank" class="footer-icon" aria-label="WhatsApp"><i class="bi bi-whatsapp" style="color:#25D366; font-size:1.6rem;"></i>
+          </a>
+
+           <!-- TikTok -->
+          <a href="https://www.tiktok.com/@chemeng.club" target="_blank" class="footer-icon" aria-label="TikTok"><i class="bi bi-tiktok" style="color:#ffffff; font-size:1.6rem;"></i>
+          </a>
+
+           <!-- Instagram -->
+          <a href="https://www.instagram.com/dekut_chemengclub" target="_blank" class="footer-icon" aria-label="Instagram"><i class="bi bi-instagram" style="color:#E1306C; font-size:1.6rem;"></i>
+          </a>
+
+           <!-- Gmail -->
+          <a href="mailto:chemengclub087@gmail.com" class="footer-icon" aria-label="Email"><i class="bi bi-envelope-fill" style="color:#EA4335; font-size:1.6rem;"></i>
+          </a>
+       </div>
       </div>
 
     </div>
@@ -401,6 +362,28 @@
 
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const loadMoreBtn = document.getElementById("loadMorePastEvents");
+  const itemsPerClick = 3;
+
+  if (!loadMoreBtn) return;
+
+  loadMoreBtn.addEventListener("click", function () {
+    const hiddenCards = document.querySelectorAll(".past-event-card.d-none");
+
+    for (let i = 0; i < itemsPerClick && i < hiddenCards.length; i++) {
+      hiddenCards[i].classList.remove("d-none");
+    }
+
+    if (hiddenCards.length <= itemsPerClick) {
+      loadMoreBtn.style.display = "none";
+    }
+  });
+});
+</script>
+
 
 <style>
   .footer-link {
